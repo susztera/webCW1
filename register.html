@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/custom.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="auth-body">
+<main class="form-auth">
+    <div class="card">
+        <div class="card-body">
+            <nav class="nav">
+                <img src="./pics/CUEHpng.png" alt="CUEH logo" style="margin-top: 5px;width: 35px; height: 35px">
+                <a class="auth-a nav-link active" aria-current="page" href="./register.html" style="font-size: x-large">Register</a>
+            </nav>
+            <form action="reg.php" method="post">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" name="email">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+                <div class="mb-3">
+                    <label for="confirm_password" class="form-label">Password again</label>
+                    <input type="password" class="form-control" id="confirm_password">
+                </div>
+                <button type="submit" class="btn btn-outline-light">Register</button>
+            </form>
+            <a class="auth-a text-decoration-none small" href="login.php" style="margin-top: 5px">Login instead?</a>
+        </div>
+    </div>
+</main>
+<script src="./js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

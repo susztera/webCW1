@@ -1,0 +1,39 @@
+html,
+body {
+    height: 100%;
+}
+
+.pageContent {
+    margin-top: 20px;
+}
+
+/*
+ ******************************* login and register ********************************************
+ */
+.form-auth {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+    color: white;
+}
+
+.auth-body {
+    display: flex;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.card {
+    background-image: url(https://wallpaperaccess.com/full/1811433.jpg);
+}
+
+.auth-a {
+    color: white;
+    padding: 5px;
+}
+
+.auth-a:focus, .auth-a:hover {
+    color: #f8f9fa;
+}
