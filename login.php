@@ -3,6 +3,7 @@ session_start();
 // Include config file
 require_once "config.php";
 
+$email_err = $password_err = "";
 // Check if the user is already logged in, if yes then redirect
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     header("location: index.php");
@@ -13,6 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ///TODO secure and validate
     $email = trim($_POST["email"]);
     $password = trim($_POST["password"]);
+    $email_err = $password_err = "";
 // Prepare a select statement
     $sql = "SELECT id, password FROM users WHERE email = ?";
 
@@ -90,6 +92,8 @@ mysqli_close($link);
                 </div>
                 <button type="submit" class="btn btn-outline-light">Login</button>
             </form>
+            <p class="mt-4" style="color: pink"><?php echo $password_err;
+                echo $email_err; ?></p>
             <a class="auth-a text-decoration-none small" href="register.html" style="margin-top: 5px">Register
                 instead?</a>
         </div>

@@ -42,8 +42,8 @@ require_once "../config.php";
                         Second semester
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="../modules/4056Marwan2.php">4056CEM - Marwan</a></li>
                         <li><a class="dropdown-item" href="../modules/4060Antal2.php">4060CEM - Antal</a></li>
-                        <li><a class="dropdown-item" href="../modules/4062James2.php">4062CEM - James</a></li>
                         <li><a class="dropdown-item" href="../modules/4063Terry2.php">4063CEM - Terry</a></li>
                         <li><a class="dropdown-item" href="../modules/4065Xiang2.php">4065CEM - Xiang</a></li>
                     </ul>
@@ -60,7 +60,7 @@ require_once "../config.php";
 <div class="container-md bg-light h-100">
     <div class="container in-text">
         <h1 class="display-4">4063CEM</h1>
-        <form>
+        <form id="formy">
             <div class="mb-3">
                 <label for="CW1" class="form-label">Coursework</label>
                 <div class="input-group">
@@ -75,10 +75,14 @@ require_once "../config.php";
                     <div class="input-group-text">%</div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-outline-dark">Calculate</button>
+            <button type="button" class="btn btn-outline-dark" onclick="grading()">Calculate</button>
         </form>
+        <div class="alert alert-primary collapse col-md-5 mt-4" id="result">
+            Sorry, something went wrong! :(
+        </div>
     </div>
 </div>
+<script src="../js/grading.js"></script>
 <script src="../js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

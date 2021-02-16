@@ -41,8 +41,8 @@ require_once "config.php";
                         Second semester
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="./modules/4056Marwan2.php">4056CEM - Marwan</a></li>
                         <li><a class="dropdown-item" href="./modules/4060Antal2.php">4060CEM - Antal</a></li>
-                        <li><a class="dropdown-item" href="./modules/4062James2.php">4062CEM - James</a></li>
                         <li><a class="dropdown-item" href="./modules/4063Terry2.php">4063CEM - Terry</a></li>
                         <li><a class="dropdown-item" href="./modules/4065Xiang2.php">4065CEM - Xiang</a></li>
                     </ul>
@@ -61,7 +61,7 @@ require_once "config.php";
         <div class="row text-center">
             <div class="col ">
                 <h1 class="display-1">WELCOME!</h1>
-                <img src="pics/SirCalcy.png" class="img-fluid">
+                <img src="pics/SirCalcy2.png" class="img-fluid">
             </div>
         </div>
         <div class="in-text">
@@ -83,7 +83,7 @@ require_once "config.php";
             <h3>
                 First semester
             </h3>
-            <form>
+            <form id="sem1">
                 <div class="mb-3">
                     <label for="4059CEM" class="form-label">4059CEM</label>
                     <div class="input-group">
@@ -105,45 +105,107 @@ require_once "config.php";
                         <div class="input-group-text">%</div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-outline-dark">Calculate</button>
+                <button type="button" class="btn btn-outline-dark" onclick="semester1()">Calculate</button>
             </form>
+            <div class="alert alert-primary collapse col-md-5 mt-4" id="sem1res">
+                Sorry, something went wrong! :(
+            </div>
             <h3>
                 Second semester
             </h3>
-            <form>
+            <form id="sem2">
                 <div class="mb-3">
-                    <label for="4060CEM" class="form-label">4060CEM</label>
+                    <label for="4056CEM" class="form-label">4056CEM</label>
                     <div class="input-group">
-                        <input type="number" class="form-control tidy-input" id="4060CEM" min="0" max="100">
+                        <input type="number" class="form-control tidy-input" id="4056CEM" name="4056CEM" min="0"
+                               max="100">
                         <div class="input-group-text">%</div>
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="4062CEM" class="form-label">4062CEM</label>
+                    <label for="4060CEM" class="form-label">4060CEM</label>
                     <div class="input-group">
-                        <input type="number" class="form-control tidy-input" id="4062CEM" min="0" max="100">
+                        <input type="number" class="form-control tidy-input" id="4060CEM" name="4060CEM" min="0"
+                               max="100">
                         <div class="input-group-text">%</div>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="4063CEM" class="form-label">4063CEM</label>
                     <div class="input-group">
-                        <input type="number" class="form-control tidy-input" id="4063CEM" min="0" max="100">
+                        <input type="number" class="form-control tidy-input" id="4063CEM" name="4063CEM" min="0"
+                               max="100">
                         <div class="input-group-text">%</div>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="4065CEM" class="form-label">4065CEM</label>
                     <div class="input-group">
-                        <input type="number" class="form-control tidy-input" id="4065CEM" min="0" max="100">
+                        <input type="number" class="form-control tidy-input" id="4065CEM" name="4065CEM" min="0"
+                               max="100">
                         <div class="input-group-text">%</div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-outline-dark">Calculate</button>
+                <div class="mb-3">
+                    <label for="advantage" class="form-label">Add+vantage module</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control tidy-input" id="advantage" name="adv" min="0"
+                               max="100">
+                        <div class="input-group-text">%</div>
+                    </div>
+                    <div id="advHelp" class="form-text">Please calculate this yourself.</div>
+                </div>
+                <button type="button" class="btn btn-outline-dark" onclick="semester2()">Calculate</button>
             </form>
+            <div class="alert alert-primary collapse col-md-5 mt-4" id="sem2res">
+                Sorry, something went wrong! :(
+            </div>
+            <button type="button" class="btn btn-outline-dark mt-2" onclick="year1()">Calculate Year</button>
+            <div class="alert alert-primary collapse col-md-5 mt-4" id="result">
+                Sorry, something went wrong! :(
+            </div>
         </div>
     </div>
 </div>
 <script src="./js/bootstrap.bundle.min.js"></script>
+<script>
+    function semester1() {
+        let x = document.getElementById('sem1').elements['4059CEM'].value;
+        let y = document.getElementById('sem1').elements['4061CEM'].value;
+        let z = document.getElementById('sem1').elements['4064CEM'].value;
+        let percent = (10 * Number(x) + 30 * Number(y) + 20 * Number(z)) / 60;
+        document.getElementById("sem1res").innerHTML = percent + "% \n";
+        document.getElementById("sem1res").innerHTML += grade(percent);
+        document.getElementById("sem1res").style.display = "block";
+    }
+
+    function semester2() {
+        let x = document.getElementById('sem2').elements['4060CEM'].value;
+        let y = document.getElementById('sem2').elements['4056CEM'].value;
+        let z = document.getElementById('sem2').elements['4063CEM'].value;
+        let t = document.getElementById('sem2').elements['4065CEM'].value;
+        let u = document.getElementById('sem2').elements['adv'].value;
+        let percent = (10 * Number(u) + 10 * Number(x) + 10 * Number(y) + 10 * Number(z) + 20 * Number(t)) / 60;
+        document.getElementById("sem2res").innerHTML = percent + "% \n";
+        document.getElementById("sem2res").innerHTML += grade(percent);
+        document.getElementById("sem2res").style.display = "block";
+    }
+
+    function year1() {
+        let a = document.getElementById('sem1').elements['4059CEM'].value;
+        let b = document.getElementById('sem1').elements['4061CEM'].value;
+        let c = document.getElementById('sem1').elements['4064CEM'].value;
+        let x = document.getElementById('sem2').elements['4060CEM'].value;
+        let y = document.getElementById('sem2').elements['4056CEM'].value;
+        let z = document.getElementById('sem2').elements['4063CEM'].value;
+        let t = document.getElementById('sem2').elements['4065CEM'].value;
+        let u = document.getElementById('sem2').elements['adv'].value;
+        let percent = (10 * Number(a) + 30 * Number(b) + 20 * Number(c) + 10 * Number(u) + 10 * Number(x) + 10 * Number(y) + 10 * Number(z) + 20 * Number(t)) / 120;
+        document.getElementById("result").innerHTML = percent + "% \n";
+        document.getElementById("result").innerHTML += grade(percent);
+        document.getElementById("result").style.display = "block";
+    }
+</script>
+<script src="js/grading.js"></script>
 </body>
 </html>
